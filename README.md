@@ -49,7 +49,7 @@ To run this code sample, the following are required.
 1. Open the Visual Studio solution file. 
 2. Right-click **Office-Add-in-Microsoft-Graph-ASPNET**, and then choose **Set as StartUp Project**.
 2. Press F5. 
-3. In PowerPoint, choose **Insert** > **Open Files** in the **OneDrive Files** group to open the task pane add-in.
+3. In Excel, choose **Insert** > **Open Files** in the **OneDrive Files** group to open the task pane add-in.
 
 ## Known issues
 
