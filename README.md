@@ -47,7 +47,7 @@ To run this code sample, the following are required.
 
 ## Run the project
 1. Open the Visual Studio solution file. 
-2. Right-click **Office-Add-in-Microsoft-Graph-ASPNET**, and then choose **Set as StartUp Project**.
+2. Right-click **Office-Add-in-Microsoft-Graph-ASPNET** solution in **Solution Explorer** (not the project nodes), and then choose **Set startup projects**. Select the **Multiple startup projects** radio button. Make sure the project that ends with "Web" is listed first.
 2. Press F5. 
 3. In Excel, choose **Insert** > **Open Files** in the **OneDrive Files** group to open the task pane add-in.
 
