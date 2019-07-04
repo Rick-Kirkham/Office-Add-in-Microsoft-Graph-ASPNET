@@ -1,6 +1,6 @@
-# Get Excel workbooks using Microsoft Graph and MSAL in an Office Add-in 
+# Get names of Excel workbooks using Microsoft Graph and MSAL in an Office Add-in 
 
-Learn how to build a Microsoft Office Add-in that connects to Microsoft Graph, finds the first three workbooks stored in OneDrive for Business, fetches their filenames, and inserts the names into a range on an Excel worksheet using Office.js.
+Learn how to build a Microsoft Office Add-in that connects to Microsoft Graph, finds the first three workbooks stored in OneDrive for Business, fetches their filenames, and inserts the names into an Office document using Office.js.
 
 # Introduction
 
@@ -25,7 +25,7 @@ To run this code sample, the following are required.
 
 * At least three Excel workbooks stored on OneDrive for Business in your Office 365 subscription.
 
-* Excel for Windows, version 16.0.6769.2001 or higher.
+* Office on Windows, version 16.0.6769.2001 or higher.
 * [Office Developer Tools](https://www.visualstudio.com/en-us/features/office-tools-vs.aspx)
 
 * A Microsoft Azure Tenant. This add-in requires Azure Active Directiory (AD). Azure AD provides identity services that applications use for authentication and authorization. A trial subscription can be acquired here: [Microsoft Azure](https://account.windowsazure.com/SignUp).
@@ -75,13 +75,13 @@ To run this code sample, the following are required.
 	* Resolution: Unzip your files to a folder directly under the root (e.g. c:\sample).
 
 ## Questions and comments
-We'd love to get your feedback about the *Get Excel workbooks using Microsoft Graph and MSAL in an Office Add-in* sample. You can send your feedback to us in the *Issues* section of this repository.
-Questions about Office 365 development in general should be posted to [Stack Overflow](http://stackoverflow.com/questions/tagged/Office365+API). Ensure your questions are tagged with [office-js] and [MicrosoftGraph].
+We'd love to get your feedback about this sample. You can send your feedback to us in the *Issues* section of this repository.
+Questions about developing Office Add-ins should be posted to [Stack Overflow](http://stackoverflow.com/questions/tagged/Office365+API). Ensure your questions are tagged with [office-js] and [MicrosoftGraph].
 
 ## Additional resources
 
 * [Microsoft Graph documentation](https://docs.microsoft.com/graph/)
-* [Office Add-ins documentation](https://docs.microsoft.com/office/dev/add-ins/overview/office-add-inss)
+* [Office Add-ins documentation](https://docs.microsoft.com/office/dev/add-ins/overview/office-add-ins)
 
 ## Copyright
 Copyright (c) 2019 Microsoft Corporation. All rights reserved.
