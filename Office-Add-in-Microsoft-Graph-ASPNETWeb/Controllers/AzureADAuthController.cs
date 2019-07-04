@@ -14,7 +14,7 @@ namespace OfficeAddinMicrosoftGraphASPNET.Controllers
 {
     public class AzureADAuthController : Controller
     {
-        // The URL that auth should redirect to after a successful login.
+        // The URL that auth should redirect to after a successful login. It is the add-in's home page.
         Uri loginRedirectUri => new Uri(Url.Action(nameof(Authorize), "AzureADAuth", null, Request.Url.Scheme));
 
         // The URL to redirect to after a logout.
@@ -30,6 +30,11 @@ namespace OfficeAddinMicrosoftGraphASPNET.Controllers
             Data.DeleteUserSessionToken(userAuthStateId, Settings.AzureADAuthority);
             Response.Cookies.Clear();
 
+            // In addition to the following line, it is also necessary to register the logoutRedirectUri
+            // value as the Logout URL when the add-in is registered in Azure AD. This enables this
+            // Action method to be called from the task pane, even in Office Online. If the Logout URL
+            // is not registered, AAD will not allow the logout page ("Hang on while we sign you out")
+            // to open in the task pane and the task pane is an iframe in Office Online. 
             return Redirect(Settings.AzureADLogoutAuthority + logoutRedirectUri.ToString());
         }
 
