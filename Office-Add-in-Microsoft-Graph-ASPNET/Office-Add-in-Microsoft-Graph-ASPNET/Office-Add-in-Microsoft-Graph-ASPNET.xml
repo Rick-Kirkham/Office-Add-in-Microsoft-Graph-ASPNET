@@ -99,8 +99,136 @@
               </Group>             
             </OfficeTab>
           </ExtensionPoint>
-		 </DesktopFormFactor>
+		    </DesktopFormFactor>
       </Host>
+
+      <Host xsi:type="Document">
+        <!-- Form factor. Currenly only DesktopFormFactor is supported. We will add TabletFormFactor and PhoneFormFactor in the future-->
+        <DesktopFormFactor>
+          <GetStarted>
+            <!--Title of the Getting Started callout. resid points to a ShortString resource -->
+            <Title resid="GetStarted.Title"/>
+
+            <!--Description of the Getting Started callout. resid points to a LongString resource -->
+            <Description resid="GetStarted.Description"/>
+
+            <!--Not used right now but you need to provide a valid resource. We will add code in the future to consume this URL. 
+							resid points to a Url resource -->
+            <LearnMoreUrl resid="GetStarted.LearnMoreUrl"/>
+          </GetStarted>
+
+          <!--Function file is an html page that includes the JavaScript where functions for ExecuteAction will be called. 
+            Think of the FunctionFile as the "code behind" ExecuteFunction 
+            This sample doesn't use this file; just adding the element for reference-->
+          <FunctionFile resid="residDesktopFuncUrl" />
+
+          <!--PrimaryCommandSurface==Main Office Ribbon-->
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+
+            <!--Use OfficeTab to extend an existing Tab. Use CustomTab to create a new tab -->
+            <!-- Documentation includes all the IDs currently tested to work -->
+            <OfficeTab id="TabInsert">
+              <!--Group. Ensure you provide a unique id. Recommendation for any IDs is to namespace using your companyname-->
+              <Group id="Contoso.Image.Group1Id1">
+                <!--Label for your group. resid must point to a ShortString resource -->
+                <Label resid="residLabel4" />
+                <!--Icons. Required sizes 16,31,80, optional 20, 24, 40, 48, 64. Strongly recommended to provide all sizes for great UX -->
+                <!--Use PNG icons and remember that all URLs on the resources section must use HTTPS -->
+                <Icon>
+                  <bt:Image size="16" resid="icon1_16x16" />
+                  <bt:Image size="32" resid="icon1_32x32" />
+                  <bt:Image size="80" resid="icon1_80x80" />
+                </Icon>
+                <!--Control. It can be of type "Button" or "Menu" -->
+                <Control xsi:type="Button" id="Button3Id1">
+                  <!--Label for your button. resid must point to a ShortString resource -->
+                  <Label resid="residLabel3" />
+                  <Supertip>
+                    <!--ToolTip title. resid must point to a ShortString resource -->
+                    <Title resid="residLabel3" />
+                    <!--ToolTip description. resid must point to a LongString resource -->
+                    <Description resid="residToolTip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="icon1_16x16" />
+                    <bt:Image size="32" resid="icon1_32x32" />
+                    <bt:Image size="80" resid="icon1_80x80" />
+                  </Icon>
+                  <!--This is what happens when the command is triggered (e.g., click on the ribbon). Supported actions are ExecuteFuncion or ShowTaskpane-->
+                  <Action xsi:type="ShowTaskpane">
+                    <!--Provide a url resource id for the location that will be displayed on the task pane -->
+                    <SourceLocation resid="residImageHomeUrl" />
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>
+
+      <Host xsi:type="Presentation">
+        <!-- Form factor. Currenly only DesktopFormFactor is supported. We will add TabletFormFactor and PhoneFormFactor in the future-->
+        <DesktopFormFactor>
+          <GetStarted>
+            <!--Title of the Getting Started callout. resid points to a ShortString resource -->
+            <Title resid="GetStarted.Title"/>
+
+            <!--Description of the Getting Started callout. resid points to a LongString resource -->
+            <Description resid="GetStarted.Description"/>
+
+            <!--Not used right now but you need to provide a valid resource. We will add code in the future to consume this URL. 
+							resid points to a Url resource -->
+            <LearnMoreUrl resid="GetStarted.LearnMoreUrl"/>
+          </GetStarted>
+
+          <!--Function file is an html page that includes the JavaScript where functions for ExecuteAction will be called. 
+            Think of the FunctionFile as the "code behind" ExecuteFunction 
+            This sample doesn't use this file; just adding the element for reference-->
+          <FunctionFile resid="residDesktopFuncUrl" />
+
+          <!--PrimaryCommandSurface==Main Office Ribbon-->
+          <ExtensionPoint xsi:type="PrimaryCommandSurface">
+
+            <!--Use OfficeTab to extend an existing Tab. Use CustomTab to create a new tab -->
+            <!-- Documentation includes all the IDs currently tested to work -->
+            <OfficeTab id="TabInsert">
+              <!--Group. Ensure you provide a unique id. Recommendation for any IDs is to namespace using your companyname-->
+              <Group id="Contoso.Image.Group1Id1">
+                <!--Label for your group. resid must point to a ShortString resource -->
+                <Label resid="residLabel4" />
+                <!--Icons. Required sizes 16,31,80, optional 20, 24, 40, 48, 64. Strongly recommended to provide all sizes for great UX -->
+                <!--Use PNG icons and remember that all URLs on the resources section must use HTTPS -->
+                <Icon>
+                  <bt:Image size="16" resid="icon1_16x16" />
+                  <bt:Image size="32" resid="icon1_32x32" />
+                  <bt:Image size="80" resid="icon1_80x80" />
+                </Icon>
+                <!--Control. It can be of type "Button" or "Menu" -->
+                <Control xsi:type="Button" id="Button3Id1">
+                  <!--Label for your button. resid must point to a ShortString resource -->
+                  <Label resid="residLabel3" />
+                  <Supertip>
+                    <!--ToolTip title. resid must point to a ShortString resource -->
+                    <Title resid="residLabel3" />
+                    <!--ToolTip description. resid must point to a LongString resource -->
+                    <Description resid="residToolTip" />
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="icon1_16x16" />
+                    <bt:Image size="32" resid="icon1_32x32" />
+                    <bt:Image size="80" resid="icon1_80x80" />
+                  </Icon>
+                  <!--This is what happens when the command is triggered (e.g., click on the ribbon). Supported actions are ExecuteFuncion or ShowTaskpane-->
+                  <Action xsi:type="ShowTaskpane">
+                    <!--Provide a url resource id for the location that will be displayed on the task pane -->
+                    <SourceLocation resid="residImageHomeUrl" />
+                  </Action>
+                </Control>
+              </Group>
+            </OfficeTab>
+          </ExtensionPoint>
+        </DesktopFormFactor>
+      </Host>      
     </Hosts>
     <Resources>
        <bt:Images>

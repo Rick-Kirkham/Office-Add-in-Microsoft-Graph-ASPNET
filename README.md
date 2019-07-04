@@ -47,15 +47,23 @@ To run this code sample, the following are required.
 3.  In web.config, use the values that you copied in the previous step. Set **AAD:ClientID** to your client id, set **AAD:ClientSecret** to your client secret, and set **"AAD:O365TenantID"** to your tenant ID. 
 
 ## Run the project
+
 1. Open the Visual Studio solution file. 
 2. Right-click **Office-Add-in-Microsoft-Graph-ASPNET** solution in **Solution Explorer** (not the project nodes), and then choose **Set startup projects**. Select the **Multiple startup projects** radio button. Make sure the project that ends with "Web" is listed first.
 3. On the **Build** menu, select **Clean Solution**. When it finishes, open the **Build** menu again and select **Build Solution**.
-2. Press F5. 
-3. In Excel, choose **Insert** > **Open Files** in the **OneDrive Files** group to open the task pane add-in.
+4. In **Solution Explorer**, select the **Office-Add-in-Microsoft-Graph-ASPNET** project node (not the top solution node and not the project whose name ends in "Web").
+5. In the **Properties** pane, open the **Start Document** drop down and choose one of the three options (Excel, Word, or PowerPoint).
+
+    ![Choose the desired Office host application: Excel or PowerPoint or Word](images/SelectHost.JPG)
+
+6. Press F5. 
+7. In the Office application, choose **Insert** > **Open Add-in** in the **OneDrive Files** group to open the task pane add-in.
+8. The pages and buttons in the add-in are self-explanatory. 
 
 ## Known issues
 
 * The Fabric spinner control appears only briefly or not at all.
+* Occasionally, when the user logs out, the task pane stops at the AAD window confirming that you have logged out instead of redirecting to the home page. Resolution: Use the personality menu in the task pane to reload the add-in, or just close the task pane and relaunch the add-in from the ribbon button.
 * Scenario: When trying to run the code sample, the add-in will not load.
 	* Resolution: 
 		1. In Visual Studio, open **SQL Server Object Explorer**.
@@ -68,11 +76,10 @@ To run this code sample, the following are required.
 
 ## Questions and comments
 We'd love to get your feedback about the *Get Excel workbooks using Microsoft Graph and MSAL in an Office Add-in* sample. You can send your feedback to us in the *Issues* section of this repository.
-Questions about Office 365 development in general should be posted to [Stack Overflow](http://stackoverflow.com/questions/tagged/Office365+API). Ensure your questions are tagged with [office-js], [MicrosoftGraph] and [API].
+Questions about Office 365 development in general should be posted to [Stack Overflow](http://stackoverflow.com/questions/tagged/Office365+API). Ensure your questions are tagged with [office-js] and [MicrosoftGraph].
 
 ## Additional resources
 
-* [Microsoft Graph (Excel) ToDo code sample](https://github.com/OfficeDev/Microsoft-Graph-ASPNET-ExcelREST-ToDo)
 * [Microsoft Graph documentation](https://docs.microsoft.com/graph/)
 * [Office Add-ins documentation](https://docs.microsoft.com/office/dev/add-ins/overview/office-add-inss)
 

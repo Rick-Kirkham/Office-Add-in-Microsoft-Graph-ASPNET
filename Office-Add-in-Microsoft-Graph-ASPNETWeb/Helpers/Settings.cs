@@ -32,7 +32,7 @@ namespace OfficeAddinMicrosoftGraphASPNET.Helpers
                 id = Guid.NewGuid().ToString("N");
                 ctx.Response.Cookies.Add(new HttpCookie(SessionKeys.Login.UserAuthStateId)
                 {
-                    Expires = DateTime.Now.AddMinutes(20),
+                    Expires = DateTime.Now.AddMinutes(60),
                     Value = id
                 });
             }

@@ -14,10 +14,10 @@ namespace OfficeAddinMicrosoftGraphASPNET.Controllers
 {
     public class AzureADAuthController : Controller
     {
-        // The URL that auth should redirect to after a successful login. It is the add-in's home page.
+        // The URL that auth should redirect to after a successful login.
         Uri loginRedirectUri => new Uri(Url.Action(nameof(Authorize), "AzureADAuth", null, Request.Url.Scheme));
 
-        // The URL to redirect to after a logout.
+        // The URL to redirect to after a logout. It is the add-in's home page.
         Uri logoutRedirectUri => new Uri(Url.Action(nameof(HomeController.Index), "Home", null, Request.Url.Scheme));
 
         /// <summary>
