@@ -1,4 +1,4 @@
-# Get names of Excel workbooks using Microsoft Graph and MSAL in an Office Add-in 
+# Get OneDrive data using Microsoft Graph and MSAL in an Office Add-in 
 
 Learn how to build a Microsoft Office Add-in that connects to Microsoft Graph, finds the first three workbooks stored in OneDrive for Business, fetches their filenames, and inserts the names into an Office document using Office.js.
 
