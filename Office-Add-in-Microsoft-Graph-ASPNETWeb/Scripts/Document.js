@@ -2,14 +2,14 @@
 
 "use strict";
 
+let dialog;
+
 Office.initialize = function () {
     $(document).ready(function () {
         app.initialize();
 
         $("#getOneDriveFilesButton").click(getFileNamesFromGraph);
-        $("#logoutO365PopupButton").click(function () {
-            window.location.href = "/azureadauth/logout";
-        });        
+        $("#logoutO365PopupButton").click(logout);        
     });
 };
 
@@ -22,19 +22,19 @@ function getFileNamesFromGraph() {
         url: "/files/onedrivefiles",
         type: "GET"
     })
-        .done(function (result) {
-            writeFileNamesToOfficeDocument(result)
-                .then(function (value) {
-                    $("#waitContainer").hide();
-                    $("#finishedContainer").show();
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-        })
-        .fail(function (result) {
-            throw "Cannot get data from MS Graph: " + result;
-        });
+    .done(function (result) {
+        writeFileNamesToOfficeDocument(result)
+            .then(function () {
+                $("#waitContainer").hide();
+                $("#finishedContainer").show();
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    })
+    .fail(function (result) {
+        throw "Cannot get data from MS Graph: " + result;
+    });
 }
 
 function writeFileNamesToOfficeDocument(result) {
@@ -105,4 +105,25 @@ function writeFileNamesToPresentation(result) {
             }
         }
     );
+}
+
+function logout() {
+   // window.location.href = "/azureadauth/logout";
+
+    Office.context.ui.displayDialogAsync('https://localhost:44301/azureadauth/logout',
+        { height: 60, width: 30 }, function (result) {           
+            dialog = result.value;
+            dialog.addEventHandler(Microsoft.Office.WebExtension.EventType.DialogMessageReceived, processLogoutMessage);
+        });
+}
+
+function processLogoutMessage(messageFromLogoutDialog) {
+    if (messageFromLogoutDialog.message === "success") {
+        dialog.close();
+        document.location.href = "/home/index";
+    }
+    else {
+        dialog.close();
+        console.log("Not able to logout: " + message);
+    }
 }

@@ -60,22 +60,22 @@
         });
     }
 
-    function showResult(result) {
-        return Excel.run(function(context) {
-            const sheet = context.workbook.worksheets.getActiveWorksheet();
+    //function showResult(result) {
+    //    return Excel.run(function(context) {
+    //        const sheet = context.workbook.worksheets.getActiveWorksheet();
 
-            const data = [[
-                result[0].name, 
-                result[1].name,
-                result[2].name]];
+    //        const data = [[
+    //            result[0].name, 
+    //            result[1].name,
+    //            result[2].name]];
 
-            const range = sheet.getRange("B5:D5");
-            range.values = data;
-            range.format.autofitColumns();
+    //        const range = sheet.getRange("B5:D5");
+    //        range.values = data;
+    //        range.format.autofitColumns();
 
-            return context.sync();
-        });
-    }
+    //        return context.sync();
+    //    });
+    //}
 
 }());
 

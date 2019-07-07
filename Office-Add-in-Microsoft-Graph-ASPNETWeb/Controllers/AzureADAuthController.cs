@@ -35,7 +35,9 @@ namespace OfficeAddinMicrosoftGraphASPNET.Controllers
             // Action method to be called from the task pane, even in Office Online. If the Logout URL
             // is not registered, AAD will not allow the logout page ("Hang on while we sign you out")
             // to open in the task pane and the task pane is an iframe in Office Online. 
-            return Redirect(Settings.AzureADLogoutAuthority + logoutRedirectUri.ToString());
+         //   return Redirect(Settings.AzureADLogoutAuthority + logoutRedirectUri.ToString());
+
+            return RedirectToAction("LogoutComplete");
         }
 
         /// <summary>
@@ -152,6 +154,15 @@ namespace OfficeAddinMicrosoftGraphASPNET.Controllers
         public ActionResult AuthorizeComplete(string authState)
         {
             ViewBag.AuthState = authState;
+            return View();
+        }
+
+        /// <summary>
+        /// Changes the view in the pop-up to tell the user that logout is complete. 
+        /// </summary>
+        /// <returns>The default view.</returns>
+        public ActionResult LogoutComplete()
+        {           
             return View();
         }
     }
