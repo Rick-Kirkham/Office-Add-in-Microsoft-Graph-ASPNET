@@ -23,20 +23,12 @@ namespace OfficeAddinMicrosoftGraphASPNET.Controllers
         /// <summary>
         /// Logs the user out.
         /// </summary>
-        /// <returns>Redirect to Azure logout.</returns>
+        /// <returns>Redirect to logout complete page.</returns>
         public ActionResult Logout()
         {
             var userAuthStateId = Settings.GetUserAuthStateId(ControllerContext.HttpContext);
             Data.DeleteUserSessionToken(userAuthStateId, Settings.AzureADAuthority);
             Response.Cookies.Clear();
-
-            // In addition to the following line, it is also necessary to register the logoutRedirectUri
-            // value as the Logout URL when the add-in is registered in Azure AD. This enables this
-            // Action method to be called from the task pane, even in Office Online. If the Logout URL
-            // is not registered, AAD will not allow the logout page ("Hang on while we sign you out")
-            // to open in the task pane and the task pane is an iframe in Office Online. 
-         //   return Redirect(Settings.AzureADLogoutAuthority + logoutRedirectUri.ToString());
-
             return RedirectToAction("LogoutComplete");
         }
 
@@ -66,7 +58,6 @@ namespace OfficeAddinMicrosoftGraphASPNET.Controllers
            
             // Redirect the browser to the login page, then come back to the Authorize method below.
             return Redirect(authUrl.ToString());
-
         }
 
         /// <summary>
@@ -74,19 +65,18 @@ namespace OfficeAddinMicrosoftGraphASPNET.Controllers
         /// the Authorization Code flow of OAuth.
         /// </summary>
         /// <returns>The default view.</returns>
-        public async Task<ActionResult> Authorize()        {
+        public async Task<ActionResult> Authorize() {
 
             ConfidentialClientApplicationBuilder clientBuilder = ConfidentialClientApplicationBuilder.Create(Settings.AzureADClientId);
             clientBuilder.WithClientSecret(Settings.AzureADClientSecret);
             clientBuilder.WithRedirectUri(loginRedirectUri.ToString());
             clientBuilder.WithAuthority(Settings.AzureADAuthority);
+
             ConfidentialClientApplication clientApp = (ConfidentialClientApplication)clientBuilder.Build();
-
             string[] graphScopes = { "Files.Read.All", "User.Read" };
-
-
             var authStateString = Request.QueryString["state"];
             var authState = JsonConvert.DeserializeObject<AuthState>(authStateString);
+
             try
             {
                 // Get and save the token.
@@ -96,11 +86,8 @@ namespace OfficeAddinMicrosoftGraphASPNET.Controllers
                 );
 
                 var authResult = await authResultBuilder.ExecuteAsync();
-
                 await SaveAuthToken(authState, authResult);
-
                 authState.authStatus = "success";
-
             }
             catch (Exception ex)
             {
@@ -113,7 +100,6 @@ namespace OfficeAddinMicrosoftGraphASPNET.Controllers
             var redirectUrl = Url.Action(nameof(AuthorizeComplete), new { authState = JsonConvert.SerializeObject(authState) });
             ViewBag.redirectUrl = redirectUrl;
             return View();
-
         }
 
         /// <summary>
@@ -128,7 +114,9 @@ namespace OfficeAddinMicrosoftGraphASPNET.Controllers
             string username = null;
             var userNameClaim = idToken.Claims.FirstOrDefault(x => x.Type == "preferred_username");
             if (userNameClaim != null)
+            {
                 username = userNameClaim.Value;
+            }
 
             using (var db = new AddInContext())
             {
@@ -150,7 +138,7 @@ namespace OfficeAddinMicrosoftGraphASPNET.Controllers
         /// and authorization of the web application are finished. 
         /// </summary>
         /// <param name="authState">The login or out status of the user.</param>
-        /// <returns>The default view.</returns>
+        /// <returns>The default view for AuthorizeComplete.</returns>
         public ActionResult AuthorizeComplete(string authState)
         {
             ViewBag.AuthState = authState;
@@ -160,7 +148,7 @@ namespace OfficeAddinMicrosoftGraphASPNET.Controllers
         /// <summary>
         /// Changes the view in the pop-up to tell the user that logout is complete. 
         /// </summary>
-        /// <returns>The default view.</returns>
+        /// <returns>The default view for LogoutComplete.</returns>
         public ActionResult LogoutComplete()
         {           
             return View();

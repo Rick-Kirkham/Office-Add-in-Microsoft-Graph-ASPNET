@@ -6,7 +6,6 @@ The pop-up dialog uses this method to tell the task pane that the user is logged
 
 Office.initialize = function (reason) {
     $(document).ready(function () {
-      //  console.log("Sending auth complete message through dialog: " + oauthResult.authStatus);
         Office.context.ui.messageParent("success");
     });
 }

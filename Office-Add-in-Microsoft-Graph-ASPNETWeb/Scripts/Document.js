@@ -29,11 +29,11 @@ function getFileNamesFromGraph() {
                 $("#finishedContainer").show();
             })
             .catch(function (error) {
-                console.log(error);
+                app.showNotification(error.toString());
             });
     })
-    .fail(function (result) {
-        throw "Cannot get data from MS Graph: " + result;
+        .fail(function (result) {
+            app.showNotification("Cannot get data from MS Graph: " + result.toString());
     });
 }
 
@@ -57,7 +57,7 @@ function writeFileNamesToOfficeDocument(result) {
             resolve();
         }
         catch (error) {
-            reject(Error("Unable to add filenames to document. " + error));
+            reject(Error("Unable to add filenames to document. " + error.toString()));
         }
     });    
 }
@@ -108,22 +108,22 @@ function writeFileNamesToPresentation(result) {
 }
 
 function logout() {
-   // window.location.href = "/azureadauth/logout";
 
     Office.context.ui.displayDialogAsync('https://localhost:44301/azureadauth/logout',
-        { height: 60, width: 30 }, function (result) {           
+        { height: 30, width: 30 }, function (result) {           
             dialog = result.value;
             dialog.addEventHandler(Microsoft.Office.WebExtension.EventType.DialogMessageReceived, processLogoutMessage);
         });
 }
 
 function processLogoutMessage(messageFromLogoutDialog) {
+
     if (messageFromLogoutDialog.message === "success") {
         dialog.close();
         document.location.href = "/home/index";
     }
     else {
         dialog.close();
-        console.log("Not able to logout: " + message);
+        app.showNotification("Not able to logout: " + messageFromLogoutDialog.toString());
     }
 }
