@@ -1,20 +1,27 @@
-# Get OneDrive data using Microsoft Graph and MSAL in an Office Add-in 
+# Get OneDrive data using Microsoft Graph and MSAL.NET in an Office Add-in 
+
+## Summary
 
 Learn how to build a Microsoft Office Add-in that connects to Microsoft Graph, finds the first three workbooks stored in OneDrive for Business, fetches their filenames, and inserts the names into an Office document using Office.js.
 
-# Introduction
-
+## Features
 Integrating data from online service providers increases the value and adoption of your add-ins. This code sample shows you how to connect your add-in to Microsoft Graph. Use this code sample to:
 
 * Connect to Microsoft Graph from an Office Add-in.
-* Use the MSAL .NET Library to implement the OAuth 2.0 authorization framework in an add-in.
+* Use the MSAL.NET Library to implement the OAuth 2.0 authorization framework in an add-in.
 * Use the OneDrive REST APIs from Microsoft Graph.
 * Show a dialog using the Office UI namespace.
 * Build an Add-in using ASP.NET MVC, MSAL 3.x.x for .NET,  and Office.js. 
 * Use add-in commands in an add-in.
 
+## Applies to
+
+-  Excel on Windows (one-time purchase and subscription)
+-  PowerPoint on Windows (one-time purchase and subscription)
+-  Word on Windows (one-time purchase and subscription)
 
 ## Prerequisites
+
 To run this code sample, the following are required.
 
 * Visual Studio 2019 or later.
@@ -26,11 +33,32 @@ To run this code sample, the following are required.
 * At least three Excel workbooks stored on OneDrive for Business in your Office 365 subscription.
 
 * Office on Windows, version 16.0.6769.2001 or higher.
+
 * [Office Developer Tools](https://www.visualstudio.com/en-us/features/office-tools-vs.aspx)
 
 * A Microsoft Azure Tenant. This add-in requires Azure Active Directiory (AD). Azure AD provides identity services that applications use for authentication and authorization. A trial subscription can be acquired here: [Microsoft Azure](https://account.windowsazure.com/SignUp).
 
-## Configure the project
+## Solution
+
+Solution | Author(s)
+---------|----------
+Office Add-in Microsoft Graph ASP.NET | Microsoft
+
+## Version history
+
+Version  | Date | Comments
+---------| -----| --------
+1.0  | July 8th, 2019| Initial release
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+----------
+
+## Build and run the solution
+
+### Configure the solution
 
 1. In **Visual Studio**, choose the **Office-Add-in-Microsoft-Graph-ASPNETWeb** project. In **Properties**, ensure **SSL Enabled** is **True**. Verify that the **SSL URL** uses the same domain name and port number as those listed in the next step.
  
@@ -45,7 +73,7 @@ To run this code sample, the following are required.
 	 
 3.  In web.config, use the values that you copied in the previous step. Set **AAD:ClientID** to your client id, set **AAD:ClientSecret** to your client secret, and set **"AAD:O365TenantID"** to your tenant ID. 
 
-## Run the project
+### Run the solution
 
 1. Open the Visual Studio solution file. 
 2. Right-click **Office-Add-in-Microsoft-Graph-ASPNET** solution in **Solution Explorer** (not the project nodes), and then choose **Set startup projects**. Select the **Multiple startup projects** radio button. Make sure the project that ends with "Web" is listed first.
@@ -62,12 +90,9 @@ To run this code sample, the following are required.
 ## Known issues
 
 * The Fabric spinner control appears only briefly or not at all.
-* Scenario: When you run the code sample, you get an error on the line *Office.context.ui.messageParent*.	
-	* Resolution: Stop running the code sample and restart it. 
-* If download the zip file, when you extract the files you get an error indicating that the file path is too long.
-	* Resolution: Unzip your files to a folder directly under the root (e.g. c:\sample).
 
 ## Questions and comments
+
 We'd love to get your feedback about this sample. You can send your feedback to us in the *Issues* section of this repository.
 Questions about developing Office Add-ins should be posted to [Stack Overflow](http://stackoverflow.com). Ensure your questions are tagged with [office-js] and [MicrosoftGraph].
 
@@ -79,6 +104,6 @@ Questions about developing Office Add-ins should be posted to [Stack Overflow](h
 ## Copyright
 Copyright (c) 2019 Microsoft Corporation. All rights reserved.
 
-
-
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
+<img src="https://telemetry.sharepointpnp.com/officedev/samples/readme-template" />
